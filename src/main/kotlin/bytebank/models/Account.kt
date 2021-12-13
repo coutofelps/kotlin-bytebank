@@ -1,17 +1,18 @@
 package bytebank.models
 
-var total: Int = 0
-    private set
-
 abstract class Account(
     var holder: Client,
     val number: Int) {
     var balance: Double = 0.0
         protected set // Dessa maneira, apenas as classes que herdarem esta classe poderão alterar o valor do saldo
 
+    companion object Counter {
+        var total: Int = 0
+            private set
+    }
+
     init {
-        // Executa alguma coisa durante a construção.
-        println("Criando nova conta...")
+        println("Criando conta...")
         total++
     }
 
@@ -59,12 +60,6 @@ class SalaryAccount (
     holder = holder,
     number = number
 ) {
-    init {
-        // Executa alguma coisa durante a construção.
-        println("Criando nova conta...")
-        total++
-    }
-
     override fun withdraw(amount: Double) {
         if(this.balance >= amount) {
             this.balance -= amount
@@ -83,12 +78,6 @@ class SavingAccount(
     holder = holder,
     number = number
 ) {
-    init {
-        // Executa alguma coisa durante a construção.
-        println("Criando nova conta...")
-        total++
-    }
-
     override fun withdraw(amount: Double) {
         if(this.balance >= amount) {
             this.balance -= amount
@@ -103,12 +92,6 @@ class TransactionAccount(
     holder = holder,
     number = number
 ) {
-    init {
-        // Executa alguma coisa durante a construção.
-        println("Criando nova conta...")
-        total++
-    }
-
     override fun withdraw(amount: Double) {
         val taxedValue = amount + 0.1
 

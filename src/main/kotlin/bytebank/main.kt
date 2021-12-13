@@ -1,9 +1,9 @@
-import bytebank.models.Client
-
 fun main() {
-    val totalAccounts = 0
+    printIt(1)
+    printIt(1.1)
+    printIt(Any())
+}
 
-    val client = Client(name = "Marcos Felipe", CPF = "", password = "")
-
-    testDifferentAccounts()
+fun printIt(value: Any): Unit {
+    println(value)
 }
