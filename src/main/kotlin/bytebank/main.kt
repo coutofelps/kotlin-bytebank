@@ -1,9 +1,9 @@
+import bytebank.tests.testNullSafety
+
 fun main() {
-    printIt(1)
-    printIt(1.1)
-    printIt(Any())
+    testNullSafety()
 }
 
-fun printIt(value: Any): Unit {
+fun printAnything(value: Any): Unit {
     println(value)
 }

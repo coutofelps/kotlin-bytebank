@@ -26,11 +26,11 @@ fun testDifferentAccounts() {
     println("Saldo da conta-poupança após o saque: R$ ${savingAccount.balance}")
     println("Saldo da conta-salário após o saque: R$ ${salaryAccount.balance}")
 
-    transactionAccount.transfer(100.0, savingAccount)
+    transactionAccount.transfer(100.0, savingAccount, "1")
     println("Saldo da conta-corrente após realizar a transferência: R$ ${transactionAccount.balance}")
     println("Saldo da conta-poupança após receber a transferência: R$ ${savingAccount.balance}")
 
-    savingAccount.transfer(100.0, transactionAccount)
+    savingAccount.transfer(100.0, transactionAccount, "1")
     println("Saldo da conta-poupança após realizar a transferência: R$ ${savingAccount.balance}")
     println("Saldo da conta-corrente após receber a transferência: R$ ${transactionAccount.balance}")
 

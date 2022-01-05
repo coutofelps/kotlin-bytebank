@@ -1,4 +1,6 @@
+import bytebank.exceptions.AuthException
 import bytebank.models.Client
+import bytebank.exceptions.InsufficientFundsException
 import bytebank.models.SavingAccount
 import bytebank.models.TransactionAccount
 
@@ -25,12 +27,25 @@ fun testAccountBehavior() {
 
     println("Transferência da conta da Beatriz Mendes para a conta do Marcos:")
 
-    if(accountPersonTwo.transfer(100.0, accountPersonOne)) {
+    try {
+        accountPersonTwo.transfer(1000.0, accountPersonOne, "1")
         println("Transferência realizada com sucesso.")
     }
 
-    else {
-        println("Transferência não realizada.")
+    catch(e: InsufficientFundsException) {
+        println("Falha na transferência: saldo insuficiente.")
+        e.printStackTrace()
+    }
+
+    catch(e: AuthException) {
+        println("Falha na autenticação.")
+        e.printStackTrace()
+    }
+
+    // Criando uma exceção padrão que englobe todas as exceções desconhecidas. Deve ficar sempre por último para que nossas exceções personalizadas sejam executadas primeiro
+    catch(e: Exception) {
+        println("Erro desconhecido.")
+        e.printStackTrace()
     }
 
     println("Saldo do Marcos Felipe: ${accountPersonOne.balance}")
