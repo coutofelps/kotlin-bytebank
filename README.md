@@ -1,4 +1,4 @@
-## Projeto React Kotlin
+## Projeto Kotlin Bytebank
 
 Repositório criado para ser utilizado pelo projeto do Bytebank desenvolvido em Kotlin nas aulas feitas através da plataforma Alura.
 
